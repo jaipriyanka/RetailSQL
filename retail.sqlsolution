@@ -33,7 +33,7 @@ DATEDIFF(MONTH, MIN(CONVERT(DATE, TRAN_DaTE, 102)), MAX(CONVERT(DATE, TRAN_DaTE,
 DATEDIFF(YEAR, MIN(CONVERT(DATE, TRAN_DaTE, 102)), MAX(CONVERT(DATE, TRAN_DaTE, 102))) as [Difference in years] 
 FROM Transactions
 
---Question5--Which product category does the sub-category “DIY” belong to?
+--Question5--Which product category does the sub-category â€œDIYâ€ belong to?
 
 select * from prod_cat_info
 where prod_subcat = 'DIY';  
@@ -91,7 +91,7 @@ where Qty>'0'
 group by cust_id
 having count(cust_id)>10
 
---Question8--What is the combined revenue earned from the “Electronics” & “Clothing” categories, from “Flagship stores”?
+--Question8--What is the combined revenue earned from the â€œElectronicsâ€ & â€œClothingâ€ categories, from â€œFlagship storesâ€?
 
 select P.Prod_cat_code,P.Prod_cat,T.Store_type,SUM(CAST (T.total_amt AS FLOAT)) AS[TOTAL AMOUNT] from prod_cat_info P
 LEFT JOIN TRANSACTIONS T
@@ -99,7 +99,7 @@ ON P.prod_cat_code=T.prod_cat_code AND P.prod_sub_cat_code = T.prod_subcat_code
 WHERE P.prod_cat IN('Electronics','Clothing') AND Store_type = 'Flagship store'
 group by P.prod_cat_code,P.prod_cat,T.Store_type;
 
---Question9----9.	What is the total revenue generated from “Male” customers in “Electronics” category? Output should display total revenue by prod sub-cat.
+--Question9----9.	What is the total revenue generated from â€œMaleâ€ customers in â€œElectronicsâ€ category? Output should display total revenue by prod sub-cat.
 
 SELECT T.Prod_subcat_code,P.Prod_cat,C.Gender,SUM(CAST(T.TOTAL_AMT AS FLOAT)) as [Total revenue generated] FROM Transactions T
 LEFT JOIN prod_cat_info P 
